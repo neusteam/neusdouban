@@ -1,0 +1,23 @@
+body,
+html,
+div,
+ul,
+li,
+input,
+button
+{
+    box-sizing: border-box;
+}
+ul
+{
+    list-style: none;
+}
+input
+{
+    border: 1px solid;
+    outline: none;
+}
+a
+{
+    text-decoration: none;
+}
