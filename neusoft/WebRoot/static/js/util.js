@@ -178,5 +178,11 @@
             createXHR();
         }
     }
+
+    function _prime(query){
+        return document.querySelector(query);
+    }
+
+    window._prime=_prime;
     window.ajax = ajax;
   })(window);
