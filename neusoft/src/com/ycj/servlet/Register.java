@@ -35,7 +35,14 @@ public class Register extends HttpServlet {
         user.setUserName(username);
         user.setPassWord(password);
         UserEntityDAOImpl u = new UserEntityDAOImpl();
-		boolean flag = u.register(user);
+        boolean f=u.regcheck(user);
+        if(f){
+        	System.out.println("用户已存在！！");
+        }
+        else {
+        	u.register(user);
+        	}
+        
         //request.getRequestDispatcher("LoginS.html").forward(request, response);
         
 		out.flush();

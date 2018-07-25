@@ -10,4 +10,7 @@ public interface UserEntityDAO {
   boolean addinfo(UserEntity ue);
   boolean updatename(UserEntity ue);
   boolean finduser(UserEntity ue);
+  boolean regcheck(UserEntity ue);
+  boolean findadmin(UserEntity ue);
+
 }
