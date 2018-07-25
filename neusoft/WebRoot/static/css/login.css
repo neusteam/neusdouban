@@ -5,7 +5,26 @@
 }
 .login-wrapper h1
 {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+.login-content a,
+.login-footer a
+{
+    -webkit-transition: all .1s;
+         -o-transition: all .1s;
+            transition: all .1s;
+
+    color: rgba(33,66,99,1);
+}
+.login-content a:hover
+{
+    color: #fff;
+    background: #039;
+}
+.login-footer a:hover
+{
+    color: #fff;
+    background: #039;
 }
 .login-header
 {
@@ -28,6 +47,29 @@ a.logo
 
     background: transparent url(../image/doubanaccount.png) no-repeat;
 }
+.login-content
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 400px;
+}
+.register-tips
+{
+    float: right;
+
+    width: 300px;
+}
+.register-tips-list li
+{
+    margin-bottom: 20px;
+
+    color: rgba(0,0,0,.7);
+}
+form.login-form
+{
+    float: left;
+}
 .login-item
 {
     width: 100%;
@@ -43,12 +85,13 @@ a.logo
     float: left;
 
     width: 50px;
+    height: 30px;
     margin-right: 15px;
 
     text-align: right;
     vertical-align: baseline;
 }
-.normal_input
+.normal-input
 {
     width: 210px;
     height: 30px;
@@ -57,7 +100,35 @@ a.logo
     border: 1px solid rgba(0,0,0,.3);
     border-radius: 3px;
 }
-.normal_input:focus
+.normal-input:focus
 {
-	box-shadow: 0 0 1px 1px #268dcd;
+    box-shadow: 0 0 1px 1px #268dcd;
+}
+input.login-button
+{
+    width: 72px;
+    height: 30px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: 1px solid #528641;
+    border-radius: 3px;
+    background-color: #3fa156;
+}
+input.login-button:hover
+{
+    border: 1px solid #6aad54;
+    background-color: #4fca6c;
+}
+input.login-button:active
+{
+    background-color: #3fa156;
+}
+.login-footer
+{
+    padding-top: 6px;
+
+    color: #999;
+    border-top: 1px dashed #ddd;
 }

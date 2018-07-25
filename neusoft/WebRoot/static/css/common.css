@@ -25,3 +25,11 @@ a
 {
     text-decoration: none;
 }
+span.fleft
+{
+	float: left;
+}
+span.fright
+{
+	float: right;
+}
