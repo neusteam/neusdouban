@@ -107,5 +107,63 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		
 	}
 	
-
+ public boolean regcheck(UserEntity ue){
+	 
+	 Connection conn = null;
+		Statement sta = null;
+		ResultSet rs = null;
+		
+		try {
+			conn=DBConnection.getConnection();
+			sta=conn.createStatement();
+			String sql=("select username,password from users where username='"+ue.getUserName()+"'");
+			rs=sta.executeQuery(sql);
+			int count=0;
+	       
+	      
+			while(rs.next()){
+			count++;
+		  
+		   
+			}
+			if(count!=0)return true;
+			else return false;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+ }
+ public boolean findadmin(UserEntity ue){
+	 Connection conn = null;
+		Statement sta = null;
+		ResultSet rs = null;
+		
+		try {
+			conn=DBConnection.getConnection();
+			sta=conn.createStatement();
+			String sql=("select username,password,status from users where username='"+ue.getUserName()+"' and password='"+ue.getPassWord()+"'");
+			rs=sta.executeQuery(sql);
+			int count=0;
+	        int flag=0;
+	      
+			while(rs.next()){
+			count++;
+		     flag=rs.getInt("status");
+		  
+		   
+			}
+			if(count!=0&&flag==2)return true;
+			else return false;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+ }
 }

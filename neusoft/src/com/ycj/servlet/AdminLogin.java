@@ -3,7 +3,6 @@ package com.ycj.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zzh.bean.UserEntity;
 import com.zzh.dao.impl.UserEntityDAOImpl;
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public Login() {
+	public AdminLogin() {
 		super();
 	}
 
@@ -42,34 +41,39 @@ public class Login extends HttpServlet {
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		
 	}
 
-
+	/**
+		 * The doPost method of the servlet. <br>
+		 *
+		 * This method is called when a form has its tag value method equals to post.
+		 * 
+		 * @param request the request send by the client to the server
+		 * @param response the response send by the server to the client
+		 * @throws ServletException if an error occurred
+		 * @throws IOException if an error occurred
+		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-	    String username=request.getParameter("username");
-	    String password=request.getParameter("password");
-
-	    UserEntity user=new UserEntity();
-        user.setUserName(username);
-        user.setPassWord(password);
-        UserEntityDAOImpl u = new UserEntityDAOImpl();
-     
-         boolean flag=u.finduser(user);
-        if(flag){
-        	
-        	System.out.println("µÇÂ½³É¹¦");
-        	
-        }
-        else{
-        	System.out.println("µÇÂ½Ê§°Ü");
-        }
- 
-	
-	    
+		 String username=request.getParameter("username");
+		    String password=request.getParameter("password");
+		   
+		    UserEntity user=new UserEntity();
+	        user.setUserName(username);
+	        user.setPassWord(password);
+	        UserEntityDAOImpl u = new UserEntityDAOImpl();
+	     
+	         boolean flag=u.findadmin(user);
+	        if(flag){
+	        	
+	        	System.out.println("µÇÂ½³É¹¦");
+	        }
+	        else{
+	        	System.out.println("µÇÂ½Ê§°Ü");
+	        }
 		out.flush();
 		out.close();
 	}
