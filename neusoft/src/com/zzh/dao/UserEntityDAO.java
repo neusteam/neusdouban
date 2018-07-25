@@ -1,5 +1,13 @@
 package com.zzh.dao;
 
-public class UserEntityDAO {
 
+
+import com.zzh.bean.UserEntity;
+
+public interface UserEntityDAO {
+  boolean login(UserEntity ue);
+  boolean register(UserEntity ue);
+  boolean addinfo(UserEntity ue);
+  boolean updatename(UserEntity ue);
+  boolean finduser(UserEntity ue);
 }
