@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.zzh.bean.UserEntity;
 import com.zzh.dao.impl.UserEntityDAOImpl;
 
-@WebServlet("/Register")
-public class Register extends HttpServlet {
-	public Register() {
+@WebServlet("/UserRegister")
+public class UserRegister extends HttpServlet {
+	public UserRegister() {
 		super();
 	}
 	public void destroy() {

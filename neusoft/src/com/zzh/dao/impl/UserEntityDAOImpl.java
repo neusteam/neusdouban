@@ -60,6 +60,9 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 			e.printStackTrace();
 			return false;
 		}
+		  finally{
+				DBConnection.close(conn, sta);
+			}
 		  
 		// TODO Auto-generated method stub
 		
@@ -74,8 +77,8 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return false;
+		
 	}
 	public boolean finduser(UserEntity ue){
 		Connection conn = null;
@@ -101,9 +104,12 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		}
+		finally{
+			DBConnection.close(conn, sta);
 		}
 		
-		return false;
 		
 	}
 	
@@ -132,9 +138,12 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		}
+		finally{
+			DBConnection.close(conn, sta);
 		}
 		
-		return false;
 		
  }
  public boolean findadmin(UserEntity ue){
@@ -162,8 +171,11 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		
-		return false;
+		finally{
+			DBConnection.close(conn, sta,rs);
+		}
  }
 }
