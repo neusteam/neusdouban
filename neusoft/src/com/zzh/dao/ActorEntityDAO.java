@@ -59,7 +59,7 @@ public class ActorEntityDAO {
 		{
 		conn = DBConnection.getConnection();
 		sta=conn.createStatement();
-		String sql = "update actorinfo set occupation ='"+ae.getOccupation()+"',describe ='"+ae.getDescribe()+"',url ='"+ae.getUrl()+"' where id='"+ae.getId()+"'";
+		String sql = "update actorinfo set occupation ='"+ae.getOccupation()+"',actordescribe ='"+ae.getDescribe()+"',url ='"+ae.getUrl()+"' where id='"+ae.getId()+"'";
 	     int count=sta.executeUpdate(sql);
 	     if(count!=0)return true;
 	     else return false;
@@ -112,13 +112,5 @@ public class ActorEntityDAO {
 			}
 	        return actorlist;
 		}
-public static void main(String[] args) {
-	ArrayList<ActorEntity> actorlist = new ArrayList<ActorEntity>();  
-	ActorEntityDAO a=new ActorEntityDAO();
-	String name="lambert";
-	ActorEntity act=new ActorEntity();
-	act.setName(name);
-	actorlist=a.getActorList(act);
-	System.out.println("–≈œ¢2£∫"+actorlist);
-}
+
 }

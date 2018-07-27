@@ -50,7 +50,7 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		  try {
 			conn=DBConnection.getConnection();
 			sta=conn.createStatement();
-			String sql="insert into users (name,sex,url,phonenumber,email,city) values ('"+ue.getName()+"','"+ue.getSex()+"','"+ue.getUrl()+"','"+ue.getPhoneNumber()+"','"+ue.getEmail()+"','"+ue.getCity()+"')";
+			String sql="update users set rname ='"+ue.getName()+"',sex ='"+ue.getSex()+"',url ='"+ue.getUrl()+"',phonenumber ='"+ue.getPhoneNumber()+"',email ='"+ue.getEmail()+"',city ='"+ue.getCity()+"',birth ='"+ue.getBirth()+"' where username='"+ue.getUserName()+"'";
 			System.out.println(sql);
 			int count=sta.executeUpdate(sql);
 			 if(count!=0)return true;
