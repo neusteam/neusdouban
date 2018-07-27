@@ -2,6 +2,7 @@ package com.ycj.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ycj.pojo.ErrorMessage;
 import com.zzh.bean.ActorEntity;
-import com.zzh.dao.ActorEntityDAO;
-@WebServlet("/AddActorinfo")
-public class AddActorinfo extends HttpServlet {
+@WebServlet("/a")
+public class test extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AddActorinfo() {
+	public test() {
 		super();
 	}
 
@@ -41,7 +42,22 @@ public class AddActorinfo extends HttpServlet {
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		response.setContentType("application/json; charset=utf-8");
+		PrintWriter out = response.getWriter();
 		
+		ArrayList<ActorEntity> a = new ArrayList<ActorEntity>();
+		
+		a.add(new ActorEntity());
+		a.add(new ActorEntity());
+		a.add(new ActorEntity());
+		a.add(new ActorEntity());
+		a.add(new ActorEntity());
+		a.add(new ActorEntity());
+		
+		
+		response.getWriter().write(a.toString());
+		out.flush();
+		out.close();
 	}
 
 	/**
@@ -58,25 +74,15 @@ public class AddActorinfo extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		request.setCharacterEncoding("UTF-8");
-		String name =request.getParameter("name");
-		String sex  =request.getParameter("sex");
-		String birth =request.getParameter("birth");
-		String hometown=request.getParameter("hometown");
-		String occupation=request.getParameter("occupation");
-		String describe=request.getParameter("describe");
-		String url=request.getParameter("url");
-		ActorEntity actor=new ActorEntity();
-		actor.setName(name);
-		actor.setSex(sex);
-		actor.setBirth(birth);
-		actor.setHometown(hometown);
-		actor.setOccupation(occupation);
-		actor.setDescribe(describe);
-		actor.setUrl(url);
-		ActorEntityDAO a=new ActorEntityDAO();
-		a.addActor(actor);
-		
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the POST method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
 		out.flush();
 		out.close();
 	}

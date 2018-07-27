@@ -1,7 +1,10 @@
 package com.ycj.servlet;
 
+import java.awt.List;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +12,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jettison.json.JSONArray;
+
+import com.alibaba.fastjson.JSON;
 import com.zzh.bean.ActorEntity;
 import com.zzh.dao.ActorEntityDAO;
-@WebServlet("/AddActorinfo")
-public class AddActorinfo extends HttpServlet {
+@WebServlet("/ShowActor")
+public class ShowActor extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AddActorinfo() {
+	public ShowActor() {
 		super();
 	}
 
@@ -41,7 +47,7 @@ public class AddActorinfo extends HttpServlet {
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
+	
 	}
 
 	/**
@@ -56,27 +62,17 @@ public class AddActorinfo extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
-		String name =request.getParameter("name");
-		String sex  =request.getParameter("sex");
-		String birth =request.getParameter("birth");
-		String hometown=request.getParameter("hometown");
-		String occupation=request.getParameter("occupation");
-		String describe=request.getParameter("describe");
-		String url=request.getParameter("url");
-		ActorEntity actor=new ActorEntity();
-		actor.setName(name);
-		actor.setSex(sex);
-		actor.setBirth(birth);
-		actor.setHometown(hometown);
-		actor.setOccupation(occupation);
-		actor.setDescribe(describe);
-		actor.setUrl(url);
+		String actorname=request.getParameter("actorname");
+		ActorEntity ae=new ActorEntity();
+		ae.setName(actorname);
+		ArrayList<ActorEntity> actorlist = new ArrayList<ActorEntity>();
 		ActorEntityDAO a=new ActorEntityDAO();
-		a.addActor(actor);
-		
+		actorlist=a.getActorList(ae);
+		System.out.println("пео╒3"+actorlist);
+	    response.getWriter().write(actorlist.toString());
 		out.flush();
 		out.close();
 	}
