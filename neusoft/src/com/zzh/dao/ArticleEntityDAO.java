@@ -10,7 +10,7 @@ public interface ArticleEntityDAO {
 	
 	public boolean altArticle(ArticleEntity ae);
 	
-	public boolean delArticle(ArticleEntity ae);
+	public boolean delArticle(String articleId);
 
 	public MovieEntity fndMovieByArticleId(ArticleEntity ae);
 }

@@ -13,19 +13,19 @@ import com.zzh.util.DBConnection;
 
 public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 
-	
 	public boolean addArticle(ArticleEntity ae) {
 		Connection conn = null;
 		Statement sta = null;
 		boolean flag = false;
-		
+
 		try {
 			conn = DBConnection.getConnection();
 			sta = conn.createStatement();
-			System.out.println("ae.getContent():"+ae.getContent());
-			String sql = "insert into articles values(null,'"+ae.getContent()+"','"+ae.getAuthorId()+"','"+ae.getMovieId()+"','"+ae.getDate()+"');";
+			System.out.println("ae.getContent():" + ae.getContent());
+			String sql = "insert into articles values(null,'" + ae.getContent() + "','" + ae.getAuthorId() + "','"
+					+ ae.getMovieId() + "','" + ae.getDate() + "');";
 			int rs = sta.executeUpdate(sql);
-			if(rs!=0){
+			if (rs != 0) {
 				flag = true;
 			}
 		} catch (SQLException e) {
@@ -42,25 +42,25 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 				flag = false;
 			}
 		}
-		
-		return flag;
-		
-		
-	}
 
+		return flag;
+
+	}
 
 	public MovieEntity fndMovieByArticleId(ArticleEntity ae) {
 		Connection conn = null;
 		Statement sta = null;
 		MovieEntity me = new MovieEntity();
-		
+
 		try {
 			conn = DBConnection.getConnection();
 			sta = conn.createStatement();
-			//select * from movieinfo where movie_id=(select movie_id from articles where id =3);
-			String sql = "select movieinfo where movie_id=(select movie_id from articles where id='"+ae.getArticleId()+"');";
+			// select * from movieinfo where movie_id=(select movie_id from
+			// articles where id =3);
+			String sql = "select movieinfo where movie_id=(select movie_id from articles where id='" + ae.getArticleId()
+					+ "');";
 			ResultSet rs = sta.executeQuery(sql);
-			while(rs.next()){
+			while (rs.next()) {
 				int movieId = rs.getInt("movie_id");
 				String movieName = rs.getString("movie_name");
 				String date = rs.getString("date");
@@ -83,40 +83,86 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 				me.setMovieName(movieName);
 				me.setPicture(picture);
 				me.setType(type);
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-			return me;
-		
-			
-		
+		}
+		return me;
+
 	}
-	
+
 	public boolean altArticle(ArticleEntity ae) {
 		Connection conn = null;
 		Statement sta = null;
 		boolean flag = false;
-		
+
 		try {
 			conn = DBConnection.getConnection();
 			sta = conn.createStatement();
+
+			String articleId = ae.getArticleId();
+			String authorId = ae.getAuthorId();
+			String content = ae.getContent();
+			String movieId = ae.getMovieId();
+
+			// id,content,user_id,movie_id,date
+			// update douban.articles set user_id = 2 where id=2;
+			String sql = "update douban.articles set content='" + content + "',user_id='" + authorId + "',movie_id='"
+					+ movieId + "'where id='" + articleId + "';";
+			int rs = sta.executeUpdate(sql);
+			if (rs != 0) {
+				flag = true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			flag = false;
+		} finally {
+			try {
+				sta.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				flag = false;
+			}
 		}
+		return flag;
 
-		
-		
 	}
 
-	public boolean delArticle(ArticleEntity ae) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean delArticle(String articleId) {
 
-	
+		Connection conn = null;
+		Statement sta = null;
+		boolean flag = false;
+
+		try {
+			conn = DBConnection.getConnection();
+			sta = conn.createStatement();
+			String sql = "delete from douban.articles where id='"+articleId+"';";
+			int rs = sta.executeUpdate(sql);
+			if (rs != 0) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			flag = false;
+		} finally {
+			try {
+				sta.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				flag = false;
+			}
+		}
+		return flag;
+
+	}
 
 }
