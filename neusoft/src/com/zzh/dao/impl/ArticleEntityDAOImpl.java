@@ -23,7 +23,8 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 			sta = conn.createStatement();
 			System.out.println("ae.getContent():" + ae.getContent());
 			String sql = "insert into articles values(null,'" + ae.getContent() + "','" + ae.getAuthorId() + "','"
-					+ ae.getMovieId() + "','" + ae.getDate() + "');";
+					+ ae.getMovieId() + "','" + ae.getDate() + "',"+"'0"+ "');";
+			System.out.println("addArticleSql:"+sql);
 			int rs = sta.executeUpdate(sql);
 			if (rs != 0) {
 				flag = true;
@@ -166,11 +167,11 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 	}
 
 	@Override
-	public boolean verifyArticle(int articleId, boolean isPass) {
+	public boolean verifyArticle(int articleId, int isPass) {
 		// TODO Auto-generated method stub
 
 		boolean flag = false;
-		if (isPass) {
+		if (isPass==1) {
 			Connection conn = null;
 			Statement sta = null;
 

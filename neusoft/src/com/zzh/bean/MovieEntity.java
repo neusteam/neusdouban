@@ -81,5 +81,10 @@ public class MovieEntity {
 		this.describe = describe;
 	}
 	
- 
+public static void main(String[] args) {
+	MovieEntity m = new MovieEntity();
+System.out.println(m.toString());	
+			
+}
+
 }

@@ -2,13 +2,15 @@ package com.zzh.bean;
 
 import java.util.Date;
 
+import com.zzh.util.Time;
+
 public class ArticleEntity {
 	
 	private String articleId;
 	private String authorId;
 	private String content;
 	private String movieId;
-	private Date date;
+	private String date;
 	
 	public String getArticleId() {
 		return articleId;
@@ -34,10 +36,11 @@ public class ArticleEntity {
 	public void setMovieId(String movieId) {
 		this.movieId = movieId;
 	}
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		Time time = new Time();
+		return time.getCurrentTime();
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

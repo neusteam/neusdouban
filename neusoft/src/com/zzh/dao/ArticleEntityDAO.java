@@ -14,5 +14,5 @@ public interface ArticleEntityDAO {
 
 	public MovieEntity fndMovieByArticleId(ArticleEntity ae);
 
-	public boolean verifyArticle(int articleId, boolean isPass);
+	public boolean verifyArticle(int articleId, int isPass);
 }

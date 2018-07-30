@@ -35,6 +35,21 @@ public class VerifyArticle extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
+	
+	public String readJSONString(HttpServletRequest request) {
+		StringBuffer json = new StringBuffer();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return json.toString();
+	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,23 +58,22 @@ public class VerifyArticle extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-//		need admin authorize
-//		
 		
 		response.setContentType("application/json");
-		BufferedReader reader = request.getReader();
-        String json = reader.readLine();
-        System.out.println(json);
-        reader.close();
-        JSONObject jo = JSONObject.parseObject(json);
-        
-//      TODO:json parse
-		int articleId=0;
-		boolean isPass = true;
-
+		request.setCharacterEncoding("UTF-8");
+		String json = readJSONString(request);
+		JSONObject jo = JSONObject.parseObject(json);
+		int articleId = jo.getInteger("id");
+		int isPass = jo.getInteger("verify");
+		
         ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
 		boolean flag = articleEntityDAO.verifyArticle(articleId,isPass);
-	
+		
+		if (flag) {
+			request.setAttribute("message", "success");
+		} else {
+			request.setAttribute("message", "fail");
+		}
 	
 	}
 
