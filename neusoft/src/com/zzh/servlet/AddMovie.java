@@ -7,17 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.zzh.bean.MovieEntity;
+import com.zzh.dao.MovieEntityDAO;
+import com.zzh.dao.impl.MovieEntityDAOImpl;
+
 /**
- * Servlet implementation class AltArticle
+ * Servlet implementation class AddMovie
  */
-@WebServlet("/AltArticle")
-public class AltArticle extends HttpServlet {
+@WebServlet("/AddMovie")
+public class AddMovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AltArticle() {
+    public AddMovie() {
         super();
     }
 
@@ -35,6 +39,12 @@ public class AltArticle extends HttpServlet {
 		doGet(request, response);
 		
 //		TODO json parse
+		MovieEntity me = new MovieEntity();
+		
+		MovieEntityDAO dao = new MovieEntityDAOImpl();
+		boolean flag = dao.addMovie(me);
+		
+		// TODO jump
 		
 	}
 

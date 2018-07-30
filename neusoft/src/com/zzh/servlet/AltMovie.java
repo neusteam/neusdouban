@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AltArticle
+ * Servlet implementation class AltMovie
  */
-@WebServlet("/AltArticle")
-public class AltArticle extends HttpServlet {
+@WebServlet("/AltMovie")
+public class AltMovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AltArticle() {
+    public AltMovie() {
         super();
     }
 
@@ -34,7 +34,7 @@ public class AltArticle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
-//		TODO json parse
+		
 		
 	}
 

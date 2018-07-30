@@ -13,4 +13,6 @@ public interface ArticleEntityDAO {
 	public boolean delArticle(String articleId);
 
 	public MovieEntity fndMovieByArticleId(ArticleEntity ae);
+
+	public boolean verifyArticle(int articleId, boolean isPass);
 }
