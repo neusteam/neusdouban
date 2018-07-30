@@ -1,16 +1,16 @@
 // ajax({
-//     type:"post",
-//     url:"",
-//     timeOut:5000,
-//     before:function(){
-//       console.log("before");  
-//     },
-//     success:function(str){
-//         console.log(str);
-//     },
-//     error:function(){
-//         console.log("error");
-//     }
+    // type:"post",
+    // url:"",
+    // timeOut:5000,
+    // before:function(){
+    //   console.log("before");  
+    // },
+    // success:function(str){
+    //     console.log(str);
+    // },
+    // error:function(){
+    //     console.log("error");
+    // }
 // });
 
 (function(window,undefined) {
