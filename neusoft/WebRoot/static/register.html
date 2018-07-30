@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>登录豆瓣</title>
+    <title>豆瓣注册</title>
     <link rel="stylesheet" href="./css/NOrmalize.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/sign_in_up.css">
@@ -13,11 +13,12 @@
 <body>
     <div class="sign-in-up-wrapper">
         <div class="sign-in-up-header">
-            <a href="" class="logo">豆瓣登录</a>
+            <a href="" class="logo">豆瓣注册</a>
         </div>
         <div class="sign-in-up-content">
-            <h1>登录豆瓣</h1>
-            <form action="../Login" method="post" class="sign-in-up-form">
+            <h1>豆瓣注册</h1>
+            <div class="sign-in-up-form">
+                <form>
                 <div class="input-content">
                     <div class="sign-in-up-item">
                         <label>账 号</label>
@@ -28,30 +29,35 @@
                         <input name="password" type="password" class="normal-input" maxlength="60" value="" tabindex="1" placeholder="请输入密码">
                     </div>
                     <div class="sign-in-up-item">
+                        <label>确 认</label>
+                        <input name="password" type="password" class="normal-input" maxlength="60" value="" tabindex="1" placeholder="请再次输入密码">
+                    </div>
+                    <div class="sign-in-up-item">
                         <label></label>
-                        <input class="sign-in-up-button" type="submit" value="登陆">
+                        <input class="sign-in-up-button" type="submit" value="注册">
                          <input class="sign-in-up-button" type="reset" value="重置">
                     </div>
                 </div>
-            </form>
+                </form>
+            </div>
 
             <div class="register-tips">
-            	<ul class="register-tips-list">
-            		<li>> 还没有豆瓣账号 ? <a href="./register.html">立即注册</a></li>
-            		<li>> 点击下载豆瓣移动应用</li>
-            	</ul>
+                <ul class="register-tips-list">
+                    <li>> 已有豆瓣账号 ? <a href="./login.html">立即登录</a></li>
+                    <li>> <a href="">点击下载豆瓣移动应用</a></li>
+                </ul>
             </div>
         </div>
         <div class="common-footer">
-        	<span class="fleft span-footer">© 5002－8102 fakedouban.com, all rights reserved</span>
-        	<span class="fright span-footer"><a href="">关于豆瓣</a>
-        	<a href="">在豆瓣工作</a>
-        	<a href="">联系我们</a>
-        	<a href="">免责声明</a>
-        	<a href="">帮助中心</a>
-        	<a href="">开发者</a>
-        	<a href="">移动应用</a>
-        	<a href="">豆瓣广告</a></span>
+            <span class="fleft span-footer">© 5002－8102 fakedouban.com, all rights reserved</span>
+            <span class="fright span-footer"><a href="">关于豆瓣</a>
+            <a href="">在豆瓣工作</a>
+            <a href="">联系我们</a>
+            <a href="">免责声明</a>
+            <a href="">帮助中心</a>
+            <a href="">开发者</a>
+            <a href="">移动应用</a>
+            <a href="">豆瓣广告</a></span>
         </div>
     </div>
     <script src="./js/login.js"></script>

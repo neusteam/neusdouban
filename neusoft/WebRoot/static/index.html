@@ -1,40 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>豆瓣</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <script src="./js/util.js"></script>
-</head>
-
-<body>
-    <div class="top_banner">
-        <ul class="top_nav">
-        	<li>豆瓣</li>
-        	<li>读书</li>
-        	<li>电影</li>
-        	<li>音乐</li>
-        	<li>同城</li>
-        	<li>小组</li>
-        	<li>阅读</li>
-        	<li>FM</li>
-        	<li>时间</li>
-        	<li>豆品</li>
-        	<li>更多</li>
-        </ul>
-
-    <div class="search_banner">
-        <div class="search_content">
-        	<img src="" alt="">
-        	<div class="search_input_banner">
-        	</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>豆瓣</title>
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/common.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <script src="./js/util.js"></script>
+    </head>
+    <body>
+        <div class="index-wrapper">
+            <div class="index-header">
+                <ul class="index-left-nav index-nav">
+                    <a href="">
+                        <li>豆瓣</li>
+                    </a>
+                    <a href="">
+                        <li>读书</li>
+                    </a>
+                    <a href="">
+                        <li>电影</li>
+                    </a>
+                    <a href="">
+                        <li>音乐</li>
+                    </a>
+                    <a href="">
+                        <li>同城</li>
+                    </a>
+                    <a href="">
+                        <li>小组</li>
+                    </a>
+                    <a href="">
+                        <li>阅读</li>
+                    </a>
+                    <a href="">
+                        <li>FM</li>
+                    </a>
+                    <a href="">
+                        <li>时间</li>
+                    </a>
+                    <a href="">
+                        <li>豆品</li>
+                    </a>
+                    <a href="">
+                        <li>更多</li>
+                    </a>
+                </ul>
+                <ul class="index-right-nav index-nav">
+                    <a href="./login.html">
+                        <li>登录</li>
+                    </a>
+                    <a href="./register.html">
+                        <li>注册</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="index-search-banner">
+                <div class="index-search-content">
+                    <div class="movie-logo" href="./index.html">
+                        <a href="">
+                            <img src="./image/movie_logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="search-input-banner">
+                        <form action="">
+                            <input name="keyWord" type="text" class="search-input" placeholder="搜索电影、电视剧、综艺、影人">
+                            <input type="submit" class="search-input-submit" value="搜索">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="index-menu-banner">
+                <ul class="menu">
+                    <li>影讯&购票</li>
+                    <li>选电影</li>
+                    <li>电视剧</li>
+                    <li>排行榜</li>
+                    <li>分类</li>
+                    <li>影评</li>
+                    <li>2017年度榜单</li>
+                    <li>2017观影报告</li>
+                </ul>
+            </div>
+            <div class="index-content-wrapper">
+                <div class="index-content">
+                    <ul class="index-movies-tags">
+                        <li>正在热映</li>
+                        <li><a href="">即将上映</a></li>
+                    </ul>
+                    <ul class="index-movies-silders">
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie3.png" alt="">
+                                </li>
+                                <li>狄仁杰之四大天王
+                                </li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie5.png" alt="">
+                                </li>
+                                <li>我不是药神</li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie4.png" alt="">
+                                </li>
+                                <li>西虹市首富</li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie2.png" alt="">
+                                </li>
+                                <li>邪不压正</li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie1.png" alt="">
+                                </li>
+                                <li>摩天营救</li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="index-content">
+                    <ul class="index-movies-tags">
+                        <li>最近热门电影</li>
+                        <li><a href="">热门</a></li>
+                        <li><a href="">最新</a></li>
+                        <li><a href="">豆瓣高分</a></li>
+                        <li><a href="">冷门佳片</a></li>
+                        <li><a href="">华语</a></li>
+                        <li><a href="">欧美</a></li>
+                        <li><a href="">韩国</a></li>
+                        <li><a href="">日本</a></li>
+                    </ul>
+                    <ul class="index-movies-silders">
+                        <li>
+                            <ul class="index-movies-item">
+                                <li id="image">
+                                    <img src="./image/movie2.png" alt="">
+                                </li>
+                                <li>邪不压正</li>
+                                <li>*****</li>
+                                <li><button class="purchase">选座购票</button></li>
+                            </ul>
+                        </li>                        <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie4.png" alt="">
+                            </li>
+                            <li>西虹市首富</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie5.png" alt="">
+                            </li>
+                            <li>我不是药神</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie1.png" alt="">
+                            </li>
+                            <li>摩天营救</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie3.png" alt="">
+                            </li>
+                            <li>狄仁杰之四大天王
+                            </li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="index-content">
+                <ul class="index-movies-tags">
+                    <li>最近热门电视剧</li>
+                    <li><a href="">热门</a></li>
+                    <li><a href="">国产剧</a></li>
+                    <li><a href="">综艺</a></li>
+                    <li><a href="">美剧</a></li>
+                    <li><a href="">日剧</a></li>
+                    <li><a href="">韩剧</a></li>
+                    <li><a href="">日本动画</a></li>
+                    <li><a href="">纪录片</a></li>
+                </ul>
+                <ul class="index-movies-silders">
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie1.png" alt="">
+                            </li>
+                            <li>摩天营救</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie3.png" alt="">
+                            </li>
+                            <li>狄仁杰之四大天王
+                            </li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie5.png" alt="">
+                            </li>
+                            <li>我不是药神</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie2.png" alt="">
+                            </li>
+                            <li>邪不压正</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="index-movies-item">
+                            <li id="image">
+                                <img src="./image/movie4.png" alt="">
+                            </li>
+                            <li>西虹市首富</li>
+                            <li>*****</li>
+                            <li><button class="purchase">选座购票</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="index-aside">
+            </div>
+            <div class="common-adv"><img src="./image/adv.jpg" alt="" class="adv"></div>
+            <div class="common-footer" style="float: left;">
+                <span class="fleft span-footer">© 5002－8102 fakedouban.com, all rights reserved</span>
+                <span class="fright span-footer"><a href="">关于豆瓣</a>
+                <a href="">在豆瓣工作</a>
+                <a href="">联系我们</a>
+                <a href="">免责声明</a>
+                <a href="">帮助中心</a>
+                <a href="">开发者</a>
+                <a href="">移动应用</a>
+                <a href="">豆瓣广告</a></span>
+            </div>
         </div>
     </div>
-    </div>
-
 </body>
-
 </html>
