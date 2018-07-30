@@ -1,0 +1,93 @@
+package com.ycj.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.zzh.bean.ActorEntity;
+import com.zzh.dao.ActorEntityDAO;
+@WebServlet("/AddActorinfo")
+public class AddActorinfo extends HttpServlet {
+
+	/**
+		 * Constructor of the object.
+		 */
+	public AddActorinfo() {
+		super();
+	}
+
+	/**
+		 * Destruction of the servlet. <br>
+		 */
+	public void destroy() {
+		super.destroy(); // Just puts "destroy" string in log
+		// Put your code here
+	}
+
+	/**
+		 * The doGet method of the servlet. <br>
+		 *
+		 * This method is called when a form has its tag value method equals to get.
+		 * 
+		 * @param request the request send by the client to the server
+		 * @param response the response send by the server to the client
+		 * @throws ServletException if an error occurred
+		 * @throws IOException if an error occurred
+		 */
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+	}
+
+	/**
+		 * The doPost method of the servlet. <br>
+		 *
+		 * This method is called when a form has its tag value method equals to post.
+		 * 
+		 * @param request the request send by the client to the server
+		 * @param response the response send by the server to the client
+		 * @throws ServletException if an error occurred
+		 * @throws IOException if an error occurred
+		 */
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("UTF-8");
+		String name =request.getParameter("name");
+		String sex  =request.getParameter("sex");
+		String birth =request.getParameter("birth");
+		String hometown=request.getParameter("hometown");
+		String occupation=request.getParameter("occupation");
+		String describe=request.getParameter("describe");
+		String url=request.getParameter("url");
+		ActorEntity actor=new ActorEntity();
+		actor.setName(name);
+		actor.setSex(sex);
+		actor.setBirth(birth);
+		actor.setHometown(hometown);
+		actor.setOccupation(occupation);
+		actor.setDescribe(describe);
+		actor.setUrl(url);
+		ActorEntityDAO a=new ActorEntityDAO();
+		a.addActor(actor);
+		
+		out.flush();
+		out.close();
+	}
+
+	/**
+		 * Initialization of the servlet. <br>
+		 *
+		 * @throws ServletException if an error occurs
+		 */
+	public void init() throws ServletException {
+		// Put your code here
+	}
+
+}

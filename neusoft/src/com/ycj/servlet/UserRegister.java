@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.zzh.bean.UserEntity;
 import com.zzh.dao.impl.UserEntityDAOImpl;
 
-@WebServlet("/Register")
-public class Register extends HttpServlet {
-	public Register() {
+@WebServlet("/UserRegister")
+public class UserRegister extends HttpServlet {
+	public UserRegister() {
 		super();
 	}
 	public void destroy() {
@@ -41,6 +42,10 @@ public class Register extends HttpServlet {
         }
         else {
         	u.register(user);
+        	Cookie cookie=new Cookie("username",username);
+        	cookie.setMaxAge(30);
+        	cookie.setPath("/");
+        	response.addCookie(cookie);
         	}
         
         //request.getRequestDispatcher("LoginS.html").forward(request, response);
