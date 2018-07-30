@@ -7,5 +7,4 @@ public interface MovieEntityDAO {
 	public boolean addMovie(MovieEntity me);
 	
 	public boolean altMovie(MovieEntity me);
-
 }

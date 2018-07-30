@@ -10,15 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ycj.pojo.ErrorMessage;
 import com.zzh.bean.ActorEntity;
-@WebServlet("/a")
-public class test extends HttpServlet {
+import com.zzh.bean.MovieEntity;
+import com.zzh.dao.ActorEntityDAO;
+import com.zzh.dao.MovieEntityDAO;
+@WebServlet("/ShowMovie")
+public class ShowMovie extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public test() {
+	public ShowMovie() {
 		super();
 	}
 
@@ -42,22 +44,7 @@ public class test extends HttpServlet {
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("application/json; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
-		ArrayList<ActorEntity> a = new ArrayList<ActorEntity>();
-		
-		a.add(new ActorEntity());
-		a.add(new ActorEntity());
-		a.add(new ActorEntity());
-		a.add(new ActorEntity());
-		a.add(new ActorEntity());
-		a.add(new ActorEntity());
-		
-		
-		response.getWriter().write(a.toString());
-		out.flush();
-		out.close();
+		doPost(request,response);
 	}
 
 	/**
@@ -72,17 +59,17 @@ public class test extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
+		request.setCharacterEncoding("UTF-8");
+		String moviename=request.getParameter("moviename");
+		MovieEntity me=new MovieEntity();
+		me.setMovieName(moviename);
+		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
+		MovieEntityDAO m=new MovieEntityDAO();
+		movielist=m.getMovieList(me);
+		System.out.println("пео╒"+movielist);
+		 response.getWriter().write(movielist.toString());
 		out.flush();
 		out.close();
 	}
