@@ -1,24 +1,22 @@
 window.addEventListener('load', () => {
-    ajax({
+    $.ajax({
         type: "post",
-        url: "localhost:8080/neusoft/ShowMovie",
-        timeOut: 5000,
-        contentType: "application/json;charset=UTF-8",
+        url: "http://localhost:8080/neusoft/ShowMovie",
+        dataType:"JSON",
+        contentType:"application/json;charset=utf-8",
         data: JSON.stringify({
             count: 5
         }),
-        before: function() {
-            console.log("before");
-        },
         success: function(str) {
+        	console.log(str);
+   
             initIndexContentItems(str)
         },
         error: function() {
             console.log("error");
+            console.log("进的这里");
         }
     })
-
-    initIndexContentItems(data)
 })
 
 const getDomElement = (type, className, text) => {

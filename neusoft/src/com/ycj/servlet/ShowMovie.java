@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zzh.bean.ActorEntity;
 import com.zzh.bean.MovieEntity;
 import com.zzh.dao.ActorEntityDAO;
 import com.zzh.dao.MovieEntityDAO;
+import com.zzh.util.JsonDecoding;
 @WebServlet("/ShowMovie")
 public class ShowMovie extends HttpServlet {
 
@@ -62,14 +64,17 @@ public class ShowMovie extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
-		String moviename=request.getParameter("moviename");
-		MovieEntity me=new MovieEntity();
-		me.setMovieName(moviename);
+		String json = JsonDecoding.readJSONString(request);
+		System.out.println(json);
+		JSONObject jo = JSONObject.parseObject(json);
+		int count = Integer.parseInt(jo.getString("count"));
+
 		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAO m=new MovieEntityDAO();
-		movielist=m.getMovieList(me);
+		movielist=m.getMovieList(count);
 		System.out.println("пео╒"+movielist);
-		 response.getWriter().write(movielist.toString());
+		response.getWriter().write(movielist.toString());
+
 		out.flush();
 		out.close();
 	}
