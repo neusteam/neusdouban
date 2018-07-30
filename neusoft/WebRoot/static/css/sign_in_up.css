@@ -9,7 +9,7 @@
     margin-bottom: 20px;
 }
 .sign-in-up-content a,
-.sign-in-up-footer a
+.commoni-footer a
 {
     -webkit-transition: all .1s;
          -o-transition: all .1s;
@@ -22,7 +22,7 @@
     color: #fff;
     background: #039;
 }
-.sign-in-up-footer a:hover
+.common-footer a:hover
 {
     color: #fff;
     background: #039;
@@ -125,11 +125,4 @@ input.sign-in-up-button:hover
 input.sign-in-up-button:active
 {
     background-color: #3fa156;
-}
-.sign-in-up-footer
-{
-    padding-top: 6px;
-
-    color: #999;
-    border-top: 1px dashed #ddd;
 }
