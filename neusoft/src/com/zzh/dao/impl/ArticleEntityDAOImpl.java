@@ -70,7 +70,7 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 				String country = rs.getString("country");
 				String language = rs.getString("language");
 				String picture = rs.getString("picture");
-				double average = rs.getDouble("average");
+				float average = rs.getFloat("average");
 				String describe = rs.getString("describe");
 				me.setActor(actor);
 				me.setAverage(average);
@@ -79,7 +79,7 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 				me.setDescribe(describe);
 				me.setDirector(director);
 				me.setLanguage(language);
-				me.setMovieId(movieId);
+				//me.setMovieId(movieId);
 				me.setMovieName(movieName);
 				me.setPicture(picture);
 				me.setType(type);

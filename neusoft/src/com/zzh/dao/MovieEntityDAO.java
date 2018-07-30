@@ -11,7 +11,7 @@ import com.zzh.bean.MovieEntity;
 import com.zzh.util.DBConnection;
 
 public class MovieEntityDAO {
-	public ArrayList<MovieEntity> getMovieList(MovieEntity me)
+	public ArrayList<MovieEntity> getMovieList(int count)
 	{
 		
 			ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();  
@@ -21,7 +21,9 @@ public class MovieEntityDAO {
 	        try {
 				conn = DBConnection.getConnection();  
 		        sta = conn.createStatement();  		        
-		        String sql = "select * from movieinfo where moviename='"+me.getMovieName()+"'";
+		        int m= 0;
+		        int n= m + count;
+		        String sql = "select * from movieinfo limit "+m+","+n+"";
 		        System.out.println(sql);
 		        rs = sta.executeQuery(sql); 		      
 		        while (rs.next()){ 
@@ -40,9 +42,10 @@ public class MovieEntityDAO {
 		            String describe=rs.getString("moviedescribe");
 		            MovieEntity movie=new MovieEntity(id,moviename,date,director,actor,type,country,language,picture,average,describe);
 		            movielist.add(movie);
-		            System.out.println("信息为："+movielist);
+		           
 		        
 		        }  
+		        System.out.println("信息为："+movielist);
 			} 
 	        catch (SQLException e){
 				// TODO Auto-generated catch block
@@ -56,11 +59,10 @@ public class MovieEntityDAO {
 		}
 
 	public static void main(String[] args) {
-		MovieEntity me=new MovieEntity();
-		me.setMovieName("我不是药神");
+		
 		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAO m=new MovieEntityDAO();
-		movielist=m.getMovieList(me);
+		movielist=m.getMovieList(5);
 		System.out.println("信息3"+movielist);
 	}
 }
