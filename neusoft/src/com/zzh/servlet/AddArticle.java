@@ -62,10 +62,6 @@ public class AddArticle extends HttpServlet {
 		
 		
 		
-//			jo.put("id", "4");
-//			jo.put("content", "abcdefghijklmn");
-//			jo.put("authorId", "12");
-//			jo.put("movieId", "1234");
 //			
 ////			-----------------------------------
 //			
