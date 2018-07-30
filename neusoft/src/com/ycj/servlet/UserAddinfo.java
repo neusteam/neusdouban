@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,22 +39,38 @@ public class UserAddinfo extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-	    String name =request.getParameter("name");
+		request.setCharacterEncoding("UTF-8");
+	    String name =request.getParameter("rname");
 	    String sex=request.getParameter("sex");
 	    String url=request.getParameter("url");
 	    String pn=request.getParameter("phonenumber");
-	    String email=request.getParameter("eamil");
+	    String email=request.getParameter("email");
 	    String city=request.getParameter("city");
-	    UserEntity user=new UserEntity();
-	    user.setName(name);
-	    user.setSex(sex);
-	    user.setUrl(url);
-	    user.setPhoneNumber(pn);
-	    user.setEmail(email);
-	    user.setCity(city);
-	    UserEntityDAOImpl u = new UserEntityDAOImpl();
-	    u.addinfo(user);
-	    
+	    String birth=request.getParameter("birth");
+	    Cookie cookie[]=request.getCookies();
+	    if(cookie==null||cookie.length==0){
+	    	
+	    }
+	    else{
+	    	for(Cookie cookies:cookie){
+	    		String value =cookies.getValue();
+	    		 UserEntity user=new UserEntity();
+	    		user.setUserName(value);
+	    		user.setName(name);
+		 	    user.setSex(sex);
+		 	    user.setUrl(url);
+		 	    user.setPhoneNumber(pn);
+		 	    user.setEmail(email);
+		 	    user.setCity(city);
+		 	    user.setBirth(birth);
+		 	    UserEntityDAOImpl u = new UserEntityDAOImpl();
+		 	    u.addinfo(user);
+	    		 }
+	    	
+	 	   
+	 	    
+	    }
+	   
 	    
 		out.flush();
 		out.close();
