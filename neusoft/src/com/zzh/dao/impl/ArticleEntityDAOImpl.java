@@ -142,7 +142,7 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 		try {
 			conn = DBConnection.getConnection();
 			sta = conn.createStatement();
-			String sql = "delete from douban.articles where id='"+articleId+"';";
+			String sql = "delete from douban.articles where id='" + articleId + "';";
 			int rs = sta.executeUpdate(sql);
 			if (rs != 0) {
 				flag = true;
@@ -163,6 +163,40 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 		}
 		return flag;
 
+	}
+
+	@Override
+	public boolean verifyArticle(int articleId, boolean isPass) {
+		// TODO Auto-generated method stub
+
+		boolean flag = false;
+		if (isPass) {
+			Connection conn = null;
+			Statement sta = null;
+
+			try {
+				conn = DBConnection.getConnection();
+				sta = conn.createStatement();
+				String sql = "update douban.articles set sts=1 where id='"+articleId+"';";
+				int rs = sta.executeUpdate(sql);
+				if (rs != 0) {
+					flag = true;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					sta.close();
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+		}
+		return flag;
 	}
 
 }

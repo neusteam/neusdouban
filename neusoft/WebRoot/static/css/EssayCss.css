@@ -1,0 +1,72 @@
+/*清零样式*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font: 12px Helvetica,Arial,sans-serif;
+}
+img,input{
+	border: 0px;
+}
+li{
+	list-style: none;
+}
+/*头部*/
+#Movie-header{
+	width: 950px;
+	height: 90px;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+#Movie-header .header-search{
+	width: 270px;
+	height: 30px;
+	position: absolute;
+	left:183px;/*设置距离基准线的位置*/
+    top: 31px;
+    color:#e4e4e4;
+    border:1px solid #999;
+    padding-left: 7px;
+}
+
+#eassy-main{
+	width: 950px;
+	height:524px;
+	margin: 42px auto 0;
+	position: relative;
+}
+
+.con-left{
+	width: 382px;
+    height: 524px;
+    position: absolute;
+    left: 200px;
+    top: 188px;
+}
+
+.right{
+	height:200px;
+	position: absolute;
+	left:750px;
+	top: 18px;
+}
+.essay-main-list li{
+	float: left;
+	width: 600px;
+}
+
+.essay-main-list li:nth-of-type(1) {
+	width: 40px;
+	height: 60px;
+	margin-right: 20px;
+}
+
+hr {
+	opacity: 0.5;
+}
+
+
+ 

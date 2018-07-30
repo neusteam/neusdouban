@@ -160,9 +160,14 @@ input.search-input-submit:active
 }
 .index-content
 {
-	width: 700px;
     float: left;
     overflow: hidden;
+
+    width: 700`aZpx;
+    margin-bottom: 30px;
+    padding-top: 10px;
+
+    border-top: 1px solid rgba(0,0,0,.1);
 }
 .index-movies-tags
 {
@@ -172,14 +177,25 @@ input.search-input-submit:active
 
     width: inherit;
     height: 32px;
+    margin-bottom: 10px;
 }
 .index-movies-tags > li
 {
+    line-height: 30px;
+
     float: left;
 
     min-width: 20px;
+    height: 30px;
     margin: 0 5px;
     padding: 0 5px;
+
+    vertical-align: bottom;
+}
+.index-movies-tags > li:nth-child(1)
+{
+    font-size: 16px;
+    line-height: 30px;
 }
 .index-movies-silders
 {
@@ -193,7 +209,7 @@ input.search-input-submit:active
     float: left;
 
     width: 115px;
-    height: 250px;
+    height: 270px;
     margin-right: 25px;
 }
 .index-movies-item
@@ -208,34 +224,44 @@ input.search-input-submit:active
 }
 .index-movies-item > li
 {
-	font-size: 14px;
+    font-size: 12px;
+    line-height: 20px;
+
+    overflow: hidden;
+
     width: 115px;
     height: 20px;
-    line-height: 20px;
-    color: rgba(0,0,0,0.7);
+
     text-align: center;
+    white-space: nowrap
+    text-overflow: ellipsis;
+
+    color: rgba(0,0,0,.8);
 }
 .index-movies-item > li:nth-child(1)
 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .index-movies-item > li:nth-child(4)
 {
-	height: 24px;
-	margin-top: 10px;
+    height: 24px;
+    margin-top: 10px;
 }
-.index-movies-item > li#image
+.index-movies-item > li.image
 {
     width: 115px;
     height: 160px;
 }
 .index-movies-item button.purchase
 {
-	color: #fff;
-	background-color: #268dcd;
-	width: 90px;
-	border-radius: 3px;
-	height: 24px;
-	font-size: 12px;
-	cursor: pointer;
+    font-size: 12px;
+
+    width: 90px;
+    height: 24px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border-radius: 3px;
+    background-color: #268dcd;
 }

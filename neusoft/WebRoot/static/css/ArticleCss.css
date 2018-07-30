@@ -1,0 +1,80 @@
+/*清零样式*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font: 15px Helvetica,Arial,sans-serif;
+}
+img,input{
+	border: 0px;
+}
+li{
+	list-style: none;
+}
+/*头部*/
+#Movie-header{
+	width: 950px;
+	height: 90px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.Movie-top{
+	display:flex;
+}
+
+.header-logo{
+	left:0;
+}
+#Movie-header .header-search{
+	width: 270px;
+	height: 30px;
+	position: absolute;
+	left:183px;/*设置距离基准线的位置*/
+    top: 34px;
+    color:#e4e4e4;
+    border:1px solid #999;
+    padding-left: 7px;
+}
+
+#article-main{
+	width: 950px;
+	height:524px;
+	margin: 42px auto 0;
+	position: relative;
+	left: 0px;
+}
+
+.con-left{
+	width: 382px;
+    height: 524px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.right{
+	height:200px;
+	width: 300px;
+	position: absolute;
+	left:800px;
+	top: 18px;
+}
+.article-main-list li{
+	float: left;
+	width: 700px;
+}
+
+.article-main-list li:nth-of-type(1) {
+	width: 60px;
+	height: 40px;
+	margin-right: 20px;
+}
+
+hr {
+	opacity: 0.3;
+}
+
+
+ 

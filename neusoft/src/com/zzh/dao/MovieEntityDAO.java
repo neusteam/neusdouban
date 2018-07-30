@@ -1,12 +1,5 @@
 package com.zzh.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-
-import com.zzh.bean.ActorEntity;
 import com.zzh.bean.MovieEntity;
 import com.zzh.util.DBConnection;
 
@@ -45,7 +38,7 @@ public class MovieEntityDAO {
 		           
 		        
 		        }  
-		        System.out.println("信息为："+movielist);
+		        System.out.println("锟斤拷息为锟斤拷"+movielist);
 			} 
 	        catch (SQLException e){
 				// TODO Auto-generated catch block
@@ -63,6 +56,6 @@ public class MovieEntityDAO {
 		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAO m=new MovieEntityDAO();
 		movielist=m.getMovieList(5);
-		System.out.println("信息3"+movielist);
+		System.out.println("锟斤拷息3"+movielist);
 	}
 }
