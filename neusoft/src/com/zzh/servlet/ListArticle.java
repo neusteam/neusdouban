@@ -2,6 +2,9 @@ package com.zzh.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,28 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-import com.zzh.bean.MovieEntity;
-import com.zzh.dao.MovieEntityDAO;
-import com.zzh.dao.impl.MovieEntityDAOImpl;
+import com.zzh.bean.ArticleEntity;
+import com.zzh.dao.ArticleEntityDAO;
+import com.zzh.dao.impl.ArticleEntityDAOImpl;
 
 /**
- * Servlet implementation class AddMovie
+ * Servlet implementation class ListArticle
  */
-@WebServlet("/AddMovie")
-public class AddMovie extends HttpServlet {
+@WebServlet("/ListArticle")
+public class ListArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddMovie() {
+    public ListArticle() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 	
@@ -52,33 +57,26 @@ public class AddMovie extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 		
 		response.setContentType("application/json");
 		request.setCharacterEncoding("UTF-8");
-		String json = readJSONString(request);
-		JSONObject jo = JSONObject.parseObject(json);
-		MovieEntity me = new MovieEntity();
-		me.setMovieId(jo.getInteger("movie_id"));
-		me.setMovieName(jo.getString("moviename"));
-		me.setActor(jo.getString("actor"));
-		me.setDirector(jo.getString("director"));
-		me.setCountry(jo.getString("country"));
-		me.setAverage(jo.getDouble("average"));
-		me.setLanguage(jo.getString("language"));
-		me.setDescribe(jo.getString("describe"));
-		me.setPicture(jo.getString("picture"));
-		me.setType(jo.getString("type"));
-		me.setDate(jo.getString("date"));
+        PrintWriter out = response.getWriter();
+
 		
-		MovieEntityDAO dao = new MovieEntityDAOImpl();
-		boolean flag = dao.addMovie(me);
+		ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
+		ArrayList<ArticleEntity> aeList = articleEntityDAO.listArticle();
+		ArticleEntity ae = new ArticleEntity();
 		
-		if (flag) {
-			request.setAttribute("message", "success");
-		} else {
-			request.setAttribute("message", "fail");
-		}
+		out.write(ae.parseJson(aeList));
+//		System.out.println(ae.parseJson(aeList));
+		out.flush();
+		
+//		List<Province> provinces=provinceDao.getProvinces();
+//        getJson(request, response, provinces);
+		
+		
 		
 	}
 

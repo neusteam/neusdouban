@@ -23,8 +23,8 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 			sta = conn.createStatement();
 			System.out.println("ae.getContent():" + ae.getContent());
 			String sql = "insert into articles values(null,'" + ae.getContent() + "','" + ae.getAuthorId() + "','"
-					+ ae.getMovieId() + "','" + ae.getDate() + "',"+"'0"+ "');";
-			System.out.println("addArticleSql:"+sql);
+					+ ae.getMovieId() + "','" + ae.getDate() + "'," + "'0" + "');";
+			System.out.println("addArticleSql:" + sql);
 			int rs = sta.executeUpdate(sql);
 			if (rs != 0) {
 				flag = true;
@@ -171,14 +171,14 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 		// TODO Auto-generated method stub
 
 		boolean flag = false;
-		if (isPass==1) {
+		if (isPass == 1) {
 			Connection conn = null;
 			Statement sta = null;
 
 			try {
 				conn = DBConnection.getConnection();
 				sta = conn.createStatement();
-				String sql = "update douban.articles set sts=1 where id='"+articleId+"';";
+				String sql = "update douban.articles set sts=1 where id='" + articleId + "';";
 				int rs = sta.executeUpdate(sql);
 				if (rs != 0) {
 					flag = true;
@@ -198,6 +198,49 @@ public class ArticleEntityDAOImpl implements ArticleEntityDAO {
 
 		}
 		return flag;
+	}
+
+	public ArrayList<ArticleEntity> listArticle() {
+		Connection conn = null;
+		Statement sta = null;
+		ArrayList<ArticleEntity> aeList = new ArrayList<ArticleEntity>();
+		
+
+		try {
+			conn = DBConnection.getConnection();
+			sta = conn.createStatement();
+			String sql = "select * from articles;";
+			ResultSet rs = sta.executeQuery(sql);
+			
+			while(rs.next()){
+				ArticleEntity ae = new ArticleEntity();
+				ae.setArticleId(rs.getString("id"));
+				ae.setAuthorId(rs.getString("user_id"));
+				ae.setContent(rs.getString("content"));
+				ae.setDate(rs.getString("date"));
+				ae.setSts(rs.getInt("sts"));
+				ae.setMovieId(rs.getString("movie_id"));
+				ae.setTitle(rs.getString("title"));
+				aeList.add(ae);
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				sta.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return aeList;
+
 	}
 
 }

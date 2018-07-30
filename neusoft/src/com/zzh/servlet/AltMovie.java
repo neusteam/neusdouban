@@ -1,11 +1,17 @@
 package com.zzh.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSONObject;
+import com.zzh.bean.MovieEntity;
+import com.zzh.dao.MovieEntityDAO;
+import com.zzh.dao.impl.MovieEntityDAOImpl;
 
 /**
  * Servlet implementation class AltMovie
@@ -20,6 +26,20 @@ public class AltMovie extends HttpServlet {
     public AltMovie() {
         super();
     }
+    
+    public String readJSONString(HttpServletRequest request) {
+		StringBuffer json = new StringBuffer();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return json.toString();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,7 +54,31 @@ public class AltMovie extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
+		response.setContentType("application/json");
+		request.setCharacterEncoding("UTF-8");
+		String json = readJSONString(request);
+		JSONObject jo = JSONObject.parseObject(json);
+		MovieEntity me = new MovieEntity();
+		me.setMovieId(jo.getInteger("movie_id"));
+		me.setMovieName(jo.getString("moviename"));
+		me.setActor(jo.getString("actor"));
+		me.setDirector(jo.getString("director"));
+		me.setCountry(jo.getString("country"));
+		me.setAverage(jo.getDouble("average"));
+		me.setLanguage(jo.getString("language"));
+		me.setDescribe(jo.getString("describe"));
+		me.setPicture(jo.getString("picture"));
+		me.setType(jo.getString("type"));
+		me.setDate(jo.getString("date"));
 		
+		MovieEntityDAO dao = new MovieEntityDAOImpl();
+		boolean flag = dao.altMovie(me);
+		
+		if (flag) {
+			request.setAttribute("message", "success");
+		} else {
+			request.setAttribute("message", "fail");
+		}
 		
 	}
 
