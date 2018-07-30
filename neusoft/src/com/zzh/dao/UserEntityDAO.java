@@ -12,5 +12,5 @@ public interface UserEntityDAO {
   boolean finduser(UserEntity ue);
   boolean regcheck(UserEntity ue);
   boolean findadmin(UserEntity ue);
-
+  int findid(UserEntity ue);
 }

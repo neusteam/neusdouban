@@ -11,18 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-
 import com.zzh.bean.MovieEntity;
-
 import com.zzh.dao.impl.MovieEntityDAOImpl;
 import com.zzh.util.JsonDecoding;
-@WebServlet("/ShowMovie")
-public class ShowMovie extends HttpServlet {
+@WebServlet("/SelectMovie")
+public class SelectMovie extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public ShowMovie() {
+	public SelectMovie() {
 		super();
 	}
 
@@ -67,11 +65,10 @@ public class ShowMovie extends HttpServlet {
 		String json = JsonDecoding.readJSONString(request);
 		System.out.println(json);
 		JSONObject jo = JSONObject.parseObject(json);
-		int count = Integer.parseInt(jo.getString("count"));
-
-		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
+		String mname = jo.getString("mname");
+        ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAOImpl m=new MovieEntityDAOImpl();
-		movielist=m.getMovieList(count);
+		movielist=m.selectMovieList(mname);
 		System.out.println("пео╒"+movielist);
 		response.getWriter().write(movielist.toString());
 
