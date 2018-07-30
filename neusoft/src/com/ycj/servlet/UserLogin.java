@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +49,7 @@ public class UserLogin extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 	    String username=request.getParameter("username");
 	    String password=request.getParameter("password");
@@ -62,6 +63,12 @@ public class UserLogin extends HttpServlet {
         if(flag){
         	
         	System.out.println("µÇÂ½³É¹¦");
+        	Cookie cookie=new Cookie("username",username);
+        	cookie.setMaxAge(30);
+        	cookie.setPath("/");
+        	response.addCookie(cookie);
+        	response.sendRedirect("static/index.html");
+
         	
         }
         else{

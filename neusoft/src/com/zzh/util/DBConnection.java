@@ -8,7 +8,7 @@ import java.sql.Connection;
 public class DBConnection {
 	static String URL="jdbc:mysql://localhost:3306/douban?characterEncoding=utf-8";
     static String USER="root";
-    static String PASSWORD="Zzh970430";
+    static String PASSWORD="root";
     static{
     	try {
 			Class.forName("com.mysql.jdbc.Driver");
