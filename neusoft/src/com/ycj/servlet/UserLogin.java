@@ -63,12 +63,18 @@ public class UserLogin extends HttpServlet {
         if(flag){
         	
         	System.out.println("µÇÂ½³É¹¦");
+        	int id=u.findid(user);
+        	
         	Cookie cookie=new Cookie("username",username);
         	cookie.setMaxAge(30);
         	cookie.setPath("/");
         	response.addCookie(cookie);
+        	Cookie cookie1=new Cookie("id",String.valueOf(id));
+        	response.addCookie(cookie1);
         	response.sendRedirect("static/index.html");
-
+         
+           
+            
         	
         }
         else{

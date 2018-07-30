@@ -12,7 +12,7 @@ import com.zzh.dao.ArticleEntityDAO;
 import com.zzh.util.DBConnection;
 
 public class ArticleEntityDAOImpl implements ArticleEntityDAO {
-
+    
 	public boolean addArticle(ArticleEntity ae) {
 		Connection conn = null;
 		Statement sta = null;

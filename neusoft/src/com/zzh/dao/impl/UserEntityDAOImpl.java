@@ -146,6 +146,33 @@ public class UserEntityDAOImpl implements UserEntityDAO{
 		
 		
  }
+ public int findid(UserEntity ue){
+	 
+	 Connection conn = null;
+		Statement sta = null;
+		ResultSet rs = null;
+		int id=0;
+		
+		try {
+			conn=DBConnection.getConnection();
+			sta=conn.createStatement();
+			String sql=("select id from users where username='"+ue.getUserName()+"'");
+			rs=sta.executeQuery(sql);
+			
+	       while(rs.next()){
+			 id =rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
+		finally{
+			
+			DBConnection.close(conn, sta);
+		}
+		return id;
+ }
  public boolean findadmin(UserEntity ue){
 	 Connection conn = null;
 		Statement sta = null;
