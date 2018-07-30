@@ -103,5 +103,4 @@ public String toString() {
 			+ "\",\"country\":\"" + country + "\",\"language\":\"" + language + "\",\"picture\":\"" + picture
 			+ "\",\"average\":\"" + average + "\",\"describe\":\"" + describe + "\"}";
 }
-
 }
