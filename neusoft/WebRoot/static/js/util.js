@@ -1,24 +1,24 @@
 // ajax({
-    // type:"post",
-    // url:"",
-    // timeOut:5000,
-    // before:function(){
-    //   console.log("before");  
-    // },
-    // success:function(str){
-    //     console.log(str);
-    // },
-    // error:function(){
-    //     console.log("error");
-    // }
+// type:"post",
+// url:"",
+// timeOut:5000,
+// before:function(){
+//   console.log("before");  
+// },
+// success:function(str){
+//     console.log(str);
+// },
+// error:function(){
+//     console.log("error");
+// }
 // });
 
-(function(window,undefined) {
-    function ajax(options) {
+(function(window, undefined) {
+    const ajax = (options) => {
 
         // 编码数据
         function setData() {
-        	//设置对象的遍码
+            //设置对象的遍码
             function setObjData(data, parentName) {
                 function encodeData(name, value, parentName) {
                     var items = [];
@@ -32,11 +32,12 @@
                     }
                     return items;
                 }
-                var arr = [],value;
+                var arr = [],
+                    value;
                 if (Object.prototype.toString.call(data) == '[object Array]') {
                     for (var i = 0, len = data.length; i < len; i++) {
                         value = data[i];
-                        arr = arr.concat(encodeData( typeof value == "object"?i:"", value, parentName));
+                        arr = arr.concat(encodeData(typeof value == "object" ? i : "", value, parentName));
                     }
                 } else if (Object.prototype.toString.call(data) == '[object Object]') {
                     for (var key in data) {
@@ -179,10 +180,10 @@
         }
     }
 
-    function _prime(query){
-        return document.querySelector(query);
+    const _prime = (query) => {
+        return document.querySelectorAll(query);
     }
 
-    window._prime=_prime;
+    window._prime = _prime;
     window.ajax = ajax;
-  })(window);
+})(window);

@@ -209,7 +209,7 @@ input.search-input-submit:active
     float: left;
 
     width: 115px;
-    height: 250px;
+    height: 270px;
     margin-right: 25px;
 }
 .index-movies-item
@@ -247,7 +247,7 @@ input.search-input-submit:active
     height: 24px;
     margin-top: 10px;
 }
-.index-movies-item > li#image
+.index-movies-item > li.image
 {
     width: 115px;
     height: 160px;
