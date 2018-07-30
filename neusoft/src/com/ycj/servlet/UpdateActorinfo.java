@@ -58,6 +58,7 @@ public class UpdateActorinfo extends HttpServlet {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		request.setCharacterEncoding("UTF-8");
 		String occupation=request.getParameter("occupation");
 		String describe=request.getParameter("describe");
 		String url=request.getParameter("url");

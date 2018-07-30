@@ -10,6 +10,8 @@ public class UserEntity {
 	private String url;
 	private String phoneNumber;
 	private String email;
+	private String city;
+	private String birth;
 	public int getUserId() {
 		return userId;
 	}
@@ -70,5 +72,11 @@ public class UserEntity {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	private String city;
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	
 }

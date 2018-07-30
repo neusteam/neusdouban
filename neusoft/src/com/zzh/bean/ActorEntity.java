@@ -1,14 +1,21 @@
 package com.zzh.bean;
 
 public class ActorEntity {
-private int id;
-private String name;
-private String sex;
-private String birth;
-private String hometown;
-private String occupation;
-private String describe;
-private String url;
+private int id = 0;
+private String name = "null";
+private String sex = "null";
+private String birth = "null";
+private String hometown = "null";
+private String occupation = "null";
+private String describe = "null";
+private String url = "null";
+
+@Override
+public String toString() {
+	return "{\"id\":\"" + id + "\",\"name\":\"" + name + "\",\"sex\":\"" + sex + "\",\"birth\":\"" + birth
+			+ "\",\"hometown\":\"" + hometown + "\",\"occupation\":\"" + occupation + "\",\"describe\":\"" + describe
+			+ "\",\"url\":\"" + url + "\"}  ";
+}
 public int getId() {
 	return id;
 }
@@ -57,4 +64,21 @@ public String getUrl() {
 public void setUrl(String url) {
 	this.url = url;
 }
+
+public ActorEntity() {
+	super();
+}
+public ActorEntity(int id, String name, String sex, String birth, String hometown, String occupation, String describe,
+		String url) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.sex = sex;
+	this.birth = birth;
+	this.hometown = hometown;
+	this.occupation = occupation;
+	this.describe = describe;
+	this.url = url;
+}
+
 }
