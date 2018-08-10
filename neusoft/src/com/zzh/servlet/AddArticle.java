@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.zzh.bean.ArticleEntity;
 import com.zzh.dao.ArticleEntityDAO;
 import com.zzh.dao.impl.ArticleEntityDAOImpl;
@@ -25,69 +24,66 @@ import com.alibaba.fastjson.*;
 @WebServlet("/AddArticle")
 public class AddArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddArticle() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AddArticle() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String readJSONString(HttpServletRequest request) {
+		StringBuffer json = new StringBuffer();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return json.toString();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 
 		response.setContentType("application/json");
-		BufferedReader reader = request.getReader();
-        String json = reader.readLine();
-        System.out.println(json);
-        reader.close();
-        JSONObject jo = JSONObject.parseObject(json);
-   
-        System.out.println("content:"+jo.getString("content"));
+		request.setCharacterEncoding("UTF-8");
+		String json = readJSONString(request);
+		JSONObject jo = JSONObject.parseObject(json);
+		
+		System.out.println("content:" + jo.getString("content"));
 		ArticleEntity ae = new ArticleEntity();
-		
-		
-//		TODO json parse
-		
-//			
-////			-----------------------------------
-//			
-//			jo.getString("content");
-			
-//			String authorId = request.getParameter("authorId");
-//			String content = request.getParameter("content");
-//			String id = request.getParameter("id");
-//			String movieId = request.getParameter("movieId");
-//			ae.setArticleId(ja.getString(0));
-//			ae.setContent(ja.getString(1));
-//			ae.setAuthorId(ja.getString(2));
-//			ae.setDate(new Date());
-//			ae.setMovieId(ja.getString(3));
-//		
-
+		ae.setArticleId(jo.getString("id"));
+		ae.setContent(jo.getString("content"));
+		ae.setAuthorId(jo.getString("authorId"));
+		ae.setMovieId(jo.getString("movieId"));
 		
 		ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
 		boolean flag = articleEntityDAO.addArticle(ae);
-		if(flag){
+		
+		if (flag) {
 			request.setAttribute("message", "success");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		} else {
-			request.setAttribute("message", "success");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		
+			request.setAttribute("message", "fail");
 		}
-		
-		
+
 	}
 
 }

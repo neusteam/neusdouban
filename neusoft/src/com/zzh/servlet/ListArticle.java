@@ -2,6 +2,9 @@ package com.zzh.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,16 +17,16 @@ import com.zzh.dao.ArticleEntityDAO;
 import com.zzh.dao.impl.ArticleEntityDAOImpl;
 
 /**
- * Servlet implementation class VerifyArticle
+ * Servlet implementation class ListArticle
  */
-@WebServlet("/VerifyArticle")
-public class VerifyArticle extends HttpServlet {
+@WebServlet("/ListArticle")
+public class ListArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VerifyArticle() {
+    public ListArticle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,7 +52,6 @@ public class VerifyArticle extends HttpServlet {
 		}
 		return json.toString();
 	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,23 +60,24 @@ public class VerifyArticle extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		
 		response.setContentType("application/json");
 		request.setCharacterEncoding("UTF-8");
-		String json = readJSONString(request);
-		JSONObject jo = JSONObject.parseObject(json);
-		int articleId = jo.getInteger("id");
-		int isPass = jo.getInteger("verify");
+        PrintWriter out = response.getWriter();
+
 		
-        ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
-		boolean flag = articleEntityDAO.verifyArticle(articleId,isPass);
+		ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
+		ArrayList<ArticleEntity> aeList = articleEntityDAO.listArticle();
+		ArticleEntity ae = new ArticleEntity();
 		
-		if (flag) {
-			request.setAttribute("message", "success");
-		} else {
-			request.setAttribute("message", "fail");
-		}
-	
+		out.write(ae.parseJson(aeList));
+//		System.out.println(ae.parseJson(aeList));
+		out.flush();
+		
+//		List<Province> provinces=provinceDao.getProvinces();
+//        getJson(request, response, provinces);
+		
+		
+		
 	}
 
 }

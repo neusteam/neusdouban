@@ -29,6 +29,21 @@ public class DelArticle extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    
+    public String readJSONString(HttpServletRequest request) {
+		StringBuffer json = new StringBuffer();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return json.toString();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,22 +61,20 @@ public class DelArticle extends HttpServlet {
 		doGet(request, response);
 		
 		response.setContentType("application/json");
-		BufferedReader reader = request.getReader();
-        String json = reader.readLine();
-        System.out.println(json);
-        reader.close();
+		request.setCharacterEncoding("UTF-8");
+		String json = readJSONString(request);
         JSONObject jo = JSONObject.parseObject(json);
-        String articleId = jo.getString("article_id");
-
+        String articleId = jo.getString("id");
 		
 		ArticleEntityDAO articleEntityDAO = new ArticleEntityDAOImpl();
 		boolean flag = articleEntityDAO.delArticle(articleId);
 		if(flag){
 			request.setAttribute("message", "success");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			System.out.println("message:"+flag);
 		} else {
-			request.setAttribute("message", "failure");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.setAttribute("message", "fail");
+			System.out.println("message:"+flag);
+
 		
 		}
         
