@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-07-31 00:06:47
+Date: 2018-07-31 08:54:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,13 +29,13 @@ CREATE TABLE `actorinfo` (
   `actordescribe` text,
   `url` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of actorinfo
 -- ----------------------------
 INSERT INTO `actorinfo` VALUES ('2', '强森', '男', '1972-05-02', '美国', '演员', '无', '无');
-INSERT INTO `actorinfo` VALUES ('3', 'lambert', '男', '1995-01-01', '重庆', '本科生', '很帅', '暂无');
+INSERT INTO `actorinfo` VALUES ('4', '沈腾', '男', '1979-10-23', '黑龙江', '演员/导演', '沈腾，开心麻花舞台剧签约艺人，开心麻花功勋演员，毕业于解放军艺术学院戏剧表演系。沈腾是陪伴开心麻花最为长久的一个坚实伙伴，2003年出演开心麻花第一部舞台剧《想吃麻花现给你拧》，之后九年的时光，他与麻花一起成长，曾主演、导演多部开心麻花爆笑舞台剧。代表作品：《乌龙山伯爵》、《索马里海盗》、《甜咸配》以及2012央视春晚小品《今天的幸福》等。', 'image/shen.png');
 
 -- ----------------------------
 -- Table structure for movieinfo
@@ -118,7 +118,7 @@ CREATE TABLE `users` (
   `city` varchar(6) DEFAULT NULL,
   `birth` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
@@ -126,3 +126,5 @@ CREATE TABLE `users` (
 INSERT INTO `users` VALUES ('1', '464839566@qq.com', '111', '1', 'ycj', '男', '无', '17777777777', 'sjieyang@163.com', '广州', '1996-03-12');
 INSERT INTO `users` VALUES ('2', '2015214256', '111111', '2', null, null, null, null, null, null, null);
 INSERT INTO `users` VALUES ('3', '20000000', '12345', '1', null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('5', '123', '123', '1', null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('6', 'yang123', '123', '1', null, null, null, null, null, null, null);

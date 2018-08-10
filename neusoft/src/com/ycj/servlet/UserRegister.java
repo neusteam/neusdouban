@@ -38,15 +38,17 @@ public class UserRegister extends HttpServlet {
         UserEntityDAOImpl u = new UserEntityDAOImpl();
         boolean f=u.regcheck(user);
         if(f){
-        	out.println("<script>alert('�û��Ѵ���');history.back()</script>");
+        	System.out.println("ÓÃ»§ÒÑ´æÔÚ£¡£¡");
+        	response.sendRedirect("static/register.html");
         }
         else {
+        	response.sendRedirect("static/login.html");
         	u.register(user);
         	Cookie cookie=new Cookie("username",username);
         	cookie.setMaxAge(30);
         	cookie.setPath("/");
         	response.addCookie(cookie);
-        	out.println("<script>alert('��¼�ɹ�')</script>");
+        	out.println("<script>alert('µÇÂ¼³É¹¦')</script>");
         	response.sendRedirect("static/index.html");
         	}
         

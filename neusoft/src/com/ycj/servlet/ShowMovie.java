@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-
+import com.ycj.pojo.DataPackage;
 import com.zzh.bean.MovieEntity;
 
 import com.zzh.dao.impl.MovieEntityDAOImpl;
@@ -72,8 +72,13 @@ public class ShowMovie extends HttpServlet {
 		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAOImpl m=new MovieEntityDAOImpl();
 		movielist=m.getMovieList(count);
-//		System.out.println("��Ϣ"+movielist);
-		response.getWriter().write(movielist.toString());
+//		System.out.println("ÐÅÏ¢"+movielist);
+		DataPackage pac = new DataPackage();
+		pac.setErrorCode("10000");
+		pac.setErrorMsg("success");
+		pac.setData(movielist.toString());
+		System.out.println("data:" + pac.toString());
+		response.getWriter().write(pac.toString());
 
 		out.flush();
 		out.close();
