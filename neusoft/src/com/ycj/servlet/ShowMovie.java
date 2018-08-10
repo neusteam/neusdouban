@@ -65,14 +65,14 @@ public class ShowMovie extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		String json = JsonDecoding.readJSONString(request);
-		System.out.println(json);
+//		System.out.println(json);
 		JSONObject jo = JSONObject.parseObject(json);
 		int count = Integer.parseInt(jo.getString("count"));
 
 		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
 		MovieEntityDAOImpl m=new MovieEntityDAOImpl();
 		movielist=m.getMovieList(count);
-		System.out.println("信息"+movielist);
+//		System.out.println("信息"+movielist);
 		response.getWriter().write(movielist.toString());
 
 		out.flush();

@@ -66,7 +66,7 @@ public class UserLogin extends HttpServlet {
         	int id=u.findid(user);
         	
         	Cookie cookie=new Cookie("username",username);
-        	cookie.setMaxAge(30);
+        	cookie.setMaxAge(3000);
         	cookie.setPath("/");
         	response.addCookie(cookie);
         	Cookie cookie1=new Cookie("id",String.valueOf(id));
@@ -78,7 +78,7 @@ public class UserLogin extends HttpServlet {
         	
         }
         else{
-        	System.out.println("µÇÂ½Ê§°Ü");
+        	out.println("<script>alert('ÕËºÅÃû»òÃÜÂë´íÎó');history.back()</script>");
         }
  
 	

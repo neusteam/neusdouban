@@ -24,7 +24,7 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 					+ me.getDirector() + "','" + me.getActor() + "','" + me.getType() + "','" + me.getCountry() + "','"
 					+ me.getLanguage() + "','" + me.getPicture() + "','" + me.getAverage() + "','" + me.getDescribe()
 					+ "');";
-			System.out.println("sql:" + sql);
+//			System.out.println("sql:" + sql);
 			int rs = sta.executeUpdate(sql);
 			if (rs != 0) {
 				flag = true;
@@ -102,7 +102,7 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 				conn = DBConnection.getConnection();  
 		        sta = conn.createStatement();  		        
 		        String sql = "select * from movieinfo where moviename='"+mname+"'";
-		        System.out.println(sql);
+//		        System.out.println(sql);
 		        rs = sta.executeQuery(sql); 		      
 		        while (rs.next()){ 
 		        	
@@ -123,7 +123,7 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 		           
 		        
 		        }  
-		        System.out.println("信息为:"+movielist);
+//		        System.out.println("信息为:"+movielist);
 			} 
 	        catch (SQLException e){
 				// TODO Auto-generated catch block
@@ -148,7 +148,7 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 		        int m= 0;
 		        int n= m + count;
 		        String sql = "select * from movieinfo limit "+m+","+n+"";
-		        System.out.println(sql);
+//		        System.out.println(sql);
 		        rs = sta.executeQuery(sql); 		      
 		        while (rs.next()){ 
 		        	
@@ -169,7 +169,7 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 		           
 		        
 		        }  
-		        System.out.println("信息为:"+movielist);
+//		        System.out.println("信息为:"+movielist);
 			} 
 	        catch (SQLException e){
 				// TODO Auto-generated catch block
@@ -181,14 +181,14 @@ public class MovieEntityDAOImpl implements MovieEntityDAO {
 			}
 	        return movielist;
 		}
-
-	public static void main(String[] args) {
-		
-		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
-		MovieEntityDAOImpl m=new MovieEntityDAOImpl();
-		MovieEntity me=new MovieEntity();
-		String mname="我不是药神";
-		movielist=m.selectMovieList(mname);
-		System.out.println("信息3"+movielist);
-	}
+//
+//	public static void main(String[] args) {
+//		
+//		ArrayList<MovieEntity> movielist = new ArrayList<MovieEntity>();
+//		MovieEntityDAOImpl m=new MovieEntityDAOImpl();
+//		MovieEntity me=new MovieEntity();
+//		String mname="我不是药神";
+//		movielist=m.selectMovieList(mname);
+//		System.out.println("信息3"+movielist);
+//	}
 }
