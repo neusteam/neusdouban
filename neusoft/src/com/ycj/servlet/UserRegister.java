@@ -39,8 +39,10 @@ public class UserRegister extends HttpServlet {
         boolean f=u.regcheck(user);
         if(f){
         	System.out.println("用户已存在！！");
+        	response.sendRedirect("static/register.html");
         }
         else {
+        	response.sendRedirect("static/login.html");
         	u.register(user);
         	Cookie cookie=new Cookie("username",username);
         	cookie.setMaxAge(30);

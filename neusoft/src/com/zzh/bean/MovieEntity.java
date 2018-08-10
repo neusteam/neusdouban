@@ -98,9 +98,8 @@ public MovieEntity() {
 }
 @Override
 public String toString() {
-	return "{\"movie_id\":\"" + movie_id + "\",\"movieName\":\"" + movieName + "\",\"date\":\"" + date
-			+ "\",\"director\":\"" + director + "\",\"actor\":\"" + actor + "\",\"type\":\"" + type
-			+ "\",\"country\":\"" + country + "\",\"language\":\"" + language + "\",\"picture\":\"" + picture
-			+ "\",\"average\":\"" + average + "\",\"describe\":\"" + describe + "\"}";
+	return "{'movie_id':'" + movie_id + "','movieName':'" + movieName + "','date':'" + date + "','director':'"
+			+ director + "','actor':'" + actor + "','type':'" + type + "','country':'" + country + "','language':'"
+			+ language + "','picture':'" + picture + "','average':'" + average + "','describe':'" + describe + "'}";
 }
 }
