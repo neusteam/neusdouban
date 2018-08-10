@@ -38,6 +38,9 @@
 
 .index-right-nav {
     float: right;
+    color: rgba(255,255,255,.7);
+    height:28px;
+    line-height:28px;
 
     min-width: 100px;
 }
@@ -418,4 +421,13 @@ input.search-input-submit:active {
     padding: 5px 0;
     color: #007722;
     font-size: 22px;
+}
+.clear
+{
+	margin-left:20px;	
+	cursor:pointer;
+	height:28px;
+	width:40px;
+	line-height:28px;
+	text-align:center;
 }
