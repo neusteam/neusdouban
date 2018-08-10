@@ -28,7 +28,7 @@ public class UserRegister extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -38,7 +38,7 @@ public class UserRegister extends HttpServlet {
         UserEntityDAOImpl u = new UserEntityDAOImpl();
         boolean f=u.regcheck(user);
         if(f){
-        	System.out.println("�û��Ѵ��ڣ���");
+        	System.out.println("ÓÃ»§ÒÑ´æÔÚ£¡£¡");
         	response.sendRedirect("static/register.html");
         }
         else {
@@ -48,6 +48,8 @@ public class UserRegister extends HttpServlet {
         	cookie.setMaxAge(30);
         	cookie.setPath("/");
         	response.addCookie(cookie);
+        	out.println("<script>alert('µÇÂ¼³É¹¦')</script>");
+        	response.sendRedirect("static/index.html");
         	}
         
         //request.getRequestDispatcher("LoginS.html").forward(request, response);
